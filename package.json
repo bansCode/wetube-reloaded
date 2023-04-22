@@ -7,7 +7,7 @@
     "url": "git+https://github.com/bansCode/wetube-reloaded.git"
   },
   "scripts": {
-    "dev": "nodemon --exec babel-node src/server.js"
+    "dev": "nodemon --exec babel-node src/init.js"
   },
   "author": "Banseok Kim<banskim0918@gmail.com>",
   "license": "MIT",
