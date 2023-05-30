@@ -135,6 +135,21 @@ export const finishGithubLogin = async (req, res) => {
   }
 };
 
+export const startKakaoLogin = (req, res) => {
+  const baseURL = "https://kauth.kakao.com/oauth/authorize";
+  const config = {
+    client_id: process.env.KAKAO_CLIENT,
+    redirect_uri: process.env.KAKAO_REDIRECT_URI,
+    response_type: "code",
+    scope: "profile_nickname,account_email,profile_image",
+  };
+  const params = new URLSearchParams(config).toString();
+  const finalURL = `${baseURL}?${params}`;
+  return res.redirect(finalURL);
+};
+
+export const finishKakaoLogin = (req, res) => {};
+
 export const logout = (req, res) => {
   req.session.destroy();
   return res.redirect("/");
