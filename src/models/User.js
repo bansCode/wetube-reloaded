@@ -7,6 +7,13 @@ const userSchema = new mongoose.Schema({
     required: true,
     unique: true,
   },
+  avatarUrl: {
+    type: String,
+  },
+  socialOnly: {
+    type: Boolean,
+    default: false,
+  },
   username: {
     type: String,
     required: true,
@@ -14,7 +21,6 @@ const userSchema = new mongoose.Schema({
   },
   password: {
     type: String,
-    required: true,
   },
   name: {
     type: String,
