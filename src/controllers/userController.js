@@ -217,7 +217,6 @@ export const postEdit = async (req, res) => {
     body: { name, email, username, location },
   } = req;
   const existingUser = await User.exists({ $or: [{ name }, { email }] });
-  console.log(existingUser);
   if (existingUser) {
     return res.status(400).render("edit-profile", {
       pageTitle: "Edit Profile",
