@@ -1,6 +1,7 @@
 import User from "../models/User";
 import fetch from "node-fetch";
 import bcrypt from "bcrypt";
+import { token } from "morgan";
 
 export const getJoin = (req, res) => {
   res.render("join", { pageTitle: "Join" });
@@ -148,7 +149,56 @@ export const startKakaoLogin = (req, res) => {
   return res.redirect(finalURL);
 };
 
-export const finishKakaoLogin = (req, res) => {};
+export const finishKakaoLogin = async (req, res) => {
+  const baseURL = "https://kauth.kakao.com/oauth/token";
+  const config = {
+    client_secret: process.env.KAKAO_SECRET,
+    grant_type: "authorization_code",
+    client_id: process.env.KAKAO_CLIENT,
+    redirect_uri: process.env.KAKAO_REDIRECT_URI,
+    code: req.query.code,
+  };
+  const params = new URLSearchParams(config).toString();
+  const finalURL = `${baseURL}?${params}`;
+  const tokenRequest = await (
+    await fetch(finalURL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+  ).json();
+  if ("access_token" in tokenRequest) {
+    // access api
+    const { access_token } = tokenRequest;
+    const apiURL = "https://kapi.kakao.com/v2/user/me";
+    const userData = await (
+      await fetch(apiURL, {
+        headers: {
+          Authorization: `Bearer ${access_token}`,
+          "Content-Type": "application/json",
+        },
+      })
+    ).json();
+    let user = await User.findOne({ email: userData.kakao_account.email });
+    if (!user) {
+      user = await User.create({
+        avatarUrl: userData.properties.profile_image,
+        name: userData.properties.nickname,
+        username: userData.properties.nickname,
+        email: userData.kakao_account.email,
+        password: "",
+        socialOnly: true,
+        location: "",
+      });
+    }
+    req.session.loggedIn = true;
+    req.session.user = user;
+    return res.redirect("/");
+  } else {
+    return res.redirect("/login");
+  }
+};
 
 export const logout = (req, res) => {
   req.session.destroy();
