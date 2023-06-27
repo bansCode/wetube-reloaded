@@ -5,10 +5,14 @@ const volumeRange = document.getElementById("volume");
 const currentTime = document.getElementById("currentTime");
 const totalTime = document.getElementById("totalTime");
 const timeline = document.getElementById("timeline");
+const fullScreenBtn = document.getElementById("fullScreen");
+const videoContainer = document.getElementById("videoContainer");
+const videoControls = document.getElementById("videoControls");
 
+let controlsTimeout = null;
+let controlsMovementTimeout = null;
 let volumeValue = 0.5;
 video.volume = volumeValue;
-
 let videoPlayStatus = false;
 let setVideoPlayStatus = false;
 
@@ -92,6 +96,51 @@ const handleTimelineSet = () => {
   setVideoPlayStatus = false;
 };
 
+const handleVideoEnded = () => {
+  video.currentTime = 0;
+  playBtn.innerText = "Play";
+};
+
+const handleVideoSkip = (event) => {
+  event.preventDefault();
+  if (event.code === "ArrowRight") {
+    video.currentTime += 5;
+  }
+  if (event.code === "ArrowLeft") {
+    video.currentTime -= 5;
+  }
+};
+
+const handleFullScreen = (event) => {
+  const fullscreen = document.fullscreenElement;
+  if (fullscreen) {
+    document.exitFullscreen();
+    fullScreenBtn.innerText = "Enter Full Screen";
+  } else {
+    videoContainer.requestFullscreen();
+    fullScreenBtn.innerText = "Exit Full Screen";
+  }
+};
+
+const hideControls = () => videoControls.classList.remove("showing");
+
+const handleMouseMove = () => {
+  if (controlsTimeout) {
+    clearTimeout(controlsTimeout);
+    controlsTimeout = null;
+  }
+  if (controlsMovementTimeout) {
+    clearTimeout(controlsMovementTimeout);
+    controlsMovementTimeout = null;
+  }
+  videoControls.classList.add("showing");
+  controlsMovementTimeout = setTimeout(hideControls, 3000);
+};
+
+const handleMouseLeave = () => {
+  controlsTimeout = setTimeout(hideControls, 3000);
+};
+
 playBtn.addEventListener("click", handlePlayClick);
 muteBtn.addEventListener("click", handleMuteClick);
 volumeRange.addEventListener("input", handleVolumeInput);
@@ -99,3 +148,8 @@ video.addEventListener("loadedmetadata", handleLoadedMetaData);
 video.addEventListener("timeupdate", handleTimeUpdate);
 timeline.addEventListener("input", handleTimeLineChange);
 timeline.addEventListener("change", handleTimelineSet);
+video.addEventListener("ended", handleVideoEnded);
+videoContainer.addEventListener("keydown", handleVideoSkip);
+fullScreenBtn.addEventListener("click", handleFullScreen);
+video.addEventListener("mousemove", handleMouseMove);
+video.addEventListener("mouseleave", handleMouseLeave);
