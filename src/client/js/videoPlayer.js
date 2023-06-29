@@ -102,8 +102,12 @@ const handleTimelineSet = () => {
 };
 
 const handleVideoEnded = () => {
+  const { id } = videoContainer.dataset;
   video.currentTime = 0;
   playBtnIcon.classList = "fas fa-play";
+  fetch(`/api/videos/${id}/view`, {
+    method: "POST",
+  });
 };
 
 const handleVideoSkip = (event) => {
