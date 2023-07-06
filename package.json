@@ -40,6 +40,7 @@
     "@babel/core": "^7.22.6",
     "@babel/node": "^7.20.7",
     "@babel/preset-env": "^7.21.4",
+    "@flydotio/dockerfile": "^0.2.16",
     "babel-loader": "^9.1.2",
     "css-loader": "^6.8.1",
     "mini-css-extract-plugin": "^2.7.6",
