@@ -1,30 +1,37 @@
 header 
-    a(href="/").header__logo
-        i.fab.fa-youtube
-    nav  
-        ul 
-            li 
-                a(href="/search") 
-                    i.fas.fa-search
-            if loggedIn 
-                li 
-                    a(href="/videos/upload") Upload Video
-                li 
-                    a(href="/users/edit") Edit Profile
-                li
-                    a(href="/users/logout") Log Out
-                li 
-                    a(href=`/users/${loggedInUser._id}`)
-                        if loggedInUser.avatarUrl === undefined
-                            span.header__avatar-not-exist 😀
-                        else 
-                            if loggedInUser.avatarUrl.includes("github")
-                                img(src=loggedInUser.avatarUrl).header__avatar
+    div.start
+        button.header_menu 
+            i.fas.fa-bars
+        a(href="/").header__logo
+            i.fab.fa-youtube
+            span MyVideo
+    div.center
+        form(method="GET").header__search__form
+            input(placeholder="Search by title", name="keyword", type="text").search__form__input
+            button 
+                i.fas.fa-search
+    div.end
+        nav  
+            ul          
+                if loggedIn 
+                    li 
+                        a(href="/videos/upload") Upload Video
+                    li 
+                        a(href="/users/edit") Edit Profile
+                    li
+                        a(href="/users/logout") Log Out
+                    li 
+                        a(href=`/users/${loggedInUser._id}`)
+                            if loggedInUser.avatarUrl === undefined
+                                span.header__avatar-not-exist 😀
                             else 
-                                img(src=loggedInUser.avatarUrl).header__avatar
-            else 
-                li 
-                    a(href="/login") Login
-                li 
-                    a(href="/join").header__btn Join
-        
+                                if loggedInUser.avatarUrl.includes("github")
+                                    img(src=loggedInUser.avatarUrl).header__avatar
+                                else 
+                                    img(src=loggedInUser.avatarUrl).header__avatar
+                else 
+                    li 
+                        button.header__setting
+                            i.fa-solid.fa-ellipsis-vertical
+                    li 
+                        a(href="/login").header__login Sign In

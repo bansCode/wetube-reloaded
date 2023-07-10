@@ -135,12 +135,96 @@ table {
 header {
   padding: 20px 50px;
   display: flex;
+  align-items: center;
   justify-content: space-between;
+  width: 100%;
+  box-sizing: border-box;
+}
+header .start {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+header .start .header__logo {
+  display: flex;
+  color: #ff0000;
+  font-size: 30px;
+}
+header .start .header__logo i {
+  display: block;
+}
+header .start .header__logo span {
+  display: block;
+  margin-left: 3px;
+  color: rgb(67, 76, 240);
+  font-weight: 600;
+}
+header .start .header_menu {
+  background-color: transparent;
+  color: white;
+  border: none;
+  font-size: 20px;
+  margin-right: 20px;
+}
+header .start .header_menu:hover {
+  cursor: pointer;
+}
+header .center {
+  flex: 0 1 730px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+header .center .header__search__form {
+  display: flex;
+  width: 80%;
+  margin: 0 auto;
+}
+header .center .header__search__form .search__form__input {
+  border-radius: 30px;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+header .center .header__search__form .search__form__input:focus {
+  border: 1px solid rgb(120, 158, 211);
+}
+header .center .header__search__form button {
+  height: 41px;
+  width: 60px;
+  border-radius: 0 30px 30px 0;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background-color: rgba(255, 255, 255, 0.2);
+  cursor: pointer;
+}
+header .center .header__search__form button i {
+  font-size: 18px;
+  color: white;
+  margin-right: 3px;
+}
+header .end {
+  display: flex;
+  justify-content: flex-end;
   align-items: center;
 }
-header .header__logo {
-  color: #ff0000;
-  font-size: 38px;
+header .end .header__setting {
+  background-color: transparent;
+  color: white;
+  border: none;
+}
+header .end .header__setting i {
+  font-size: 18px;
+}
+header .end .header__setting:hover {
+  cursor: pointer;
+}
+header .end .header__login {
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  padding: 10px 15px;
+  color: rgb(64, 133, 229);
+  border-radius: 15px;
+}
+header .end .header__login:hover {
+  background-color: rgba(96, 140, 201, 0.4);
 }
 header ul {
   display: flex;
@@ -155,12 +239,6 @@ header ul li {
 }
 header ul i {
   font-size: 16px;
-}
-header .header__btn {
-  background-color: white;
-  color: #0f0f0f;
-  padding: 5px 10px;
-  border-radius: 5px;
 }
 header .header__avatar {
   width: 40px;
@@ -222,11 +300,9 @@ footer {
   border-radius: 50%;
 }
 
-form {
+form:not(.header__search__form) {
   max-width: 420px;
   margin: 0 auto;
-}
-form:not(.search__form) {
   padding: 30px;
   background-color: rgba(0, 0, 0, 0.7);
   border-radius: 10px;
@@ -236,7 +312,7 @@ form:not(.search__form) {
 input:not(input[type=range]),
 input[type=submit] {
   all: unset;
-  padding: 15px 20px;
+  padding: 10px 20px;
   border-radius: 5px;
   border: 1px solid rgba(255, 255, 255, 0.2);
   background-color: black;
