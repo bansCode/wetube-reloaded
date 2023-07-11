@@ -1,5 +1,8 @@
 header {
-  padding: 20px 50px;
+  position: fixed;
+  z-index: 401;
+  top: 0;
+  padding: 10px 30px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -29,6 +32,9 @@ header {
       border: none;
       font-size: 20px;
       margin-right: 20px;
+      z-index: 401;
+      transition: all 0.3s ease-in-out;
+      box-sizing: border-box;
       &:hover {
         cursor: pointer;
       }

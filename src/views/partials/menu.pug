@@ -1,2 +1,27 @@
-div.menuContainer
-    
+div.menuContainer#menu_container
+    div.menuContainer__items
+        a(href="/").menuContainer__items__home
+            i.fa-solid.fa-house 
+            span  Home
+        div.menuContainer__items__shorts 
+            i.fas.fa-play-circle
+            span  Shorts
+        div.menuContainer__items__subscriptions
+            i.fas.fa-photo-video 
+            span Subscriptions
+        if !loggedIn
+            div.menuContainer__items__login
+                a(href="/login").header__login Sign In
+        else 
+            div.menuContainer__items__profile
+                a(href=`/users/${loggedInUser._id}`) My Profile
+div.menuIcons#menu_icons
+    a(href="/").menuIcons__items__home
+        i.fa-solid.fa-house 
+        span  Home
+    div.menuIcons__items__shorts 
+        i.fas.fa-play-circle
+        span  Short
+    div.menuIcons__items__subscriptions
+        i.fas.fa-photo-video 
+        span Subscriptions
