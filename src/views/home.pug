@@ -2,7 +2,25 @@ extends base
 include mixins/video
 
 block content 
-    div.menuContainer
+    div.main-header
+        button All
+        button Gaming
+        button K-Pop 
+        button Apple 
+        button Music 
+        button Computer Programming 
+        button Javascript 
+        button Live
+        button Bodybuilding 
+        button News 
+        button Food 
+        button Mixes
+        button Basketball 
+        button Variety Shows 
+        button League of Legends 
+        button Anime 
+        button Recently Uploaded 
+        button New to you
     div.video-grid
         each video in videos 
             +video(video)

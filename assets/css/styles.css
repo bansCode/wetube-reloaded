@@ -134,7 +134,7 @@ table {
 
 header {
   position: fixed;
-  z-index: 401;
+  z-index: 100;
   top: 0;
   padding: 10px 30px;
   display: flex;
@@ -151,7 +151,7 @@ header .start {
 header .start .header__logo {
   display: flex;
   color: #ff0000;
-  font-size: 30px;
+  font-size: 22px;
 }
 header .start .header__logo i {
   display: block;
@@ -166,7 +166,7 @@ header .start .header_menu {
   background-color: transparent;
   color: white;
   border: none;
-  font-size: 20px;
+  font-size: 18px;
   margin-right: 20px;
   z-index: 401;
   transition: all 0.3s ease-in-out;
@@ -263,13 +263,15 @@ footer {
 }
 
 .video-mixin .video-mixin__thumb {
-  height: 140px;
+  height: 190px;
   border-radius: 7px;
-  width: 100%;
+  width: 330px;
   background-color: ivory;
 }
 .video-mixin .video-mixin__data {
-  padding: 0px 15px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
 }
 .video-mixin .video-mixin__data .video-mixin__title {
   font-size: 18px;
@@ -277,8 +279,12 @@ footer {
   margin-top: 10px;
 }
 .video-mixin .video-mixin__data .video-mixin__meta {
-  margin-top: 5px;
+  margin-top: 8px;
   font-size: 12px;
+}
+.video-mixin .video-mixin__data .video-mixin__meta .video-mixin__meta__name {
+  display: block;
+  margin-bottom: 5px;
 }
 
 .empty__message {
@@ -303,6 +309,12 @@ footer {
 .avatar {
   width: 150px;
   height: 150px;
+  border-radius: 50%;
+}
+
+.avatar__video {
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
 }
 
@@ -602,6 +614,33 @@ input[type=submit]:disabled,
   margin-bottom: 10px;
 }
 
+.main-header {
+  max-width: 1500px;
+  width: 100%;
+  display: flex;
+  position: fixed;
+  top: 80px;
+  overflow-x: scroll;
+  padding-right: 30px;
+}
+.main-header button {
+  white-space: nowrap;
+  margin-right: 15px;
+  font-size: 13px;
+  padding: 10px 15px;
+  background-color: rgba(255, 255, 255, 0.1);
+  color: white;
+  border: none;
+  border-radius: 8px;
+}
+.main-header button:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.video-grid {
+  margin-top: 150px;
+}
+
 a {
   color: inherit;
   text-decoration: none;
@@ -614,10 +653,16 @@ body {
 }
 
 main {
-  max-width: 1200px;
+  max-width: 1500px;
   width: 100%;
   margin: 0 auto;
-  margin-top: 150px;
+  margin-top: 80px;
+  margin-left: 150px;
+  position: relative;
+}
+
+main.menu-active {
+  margin-left: 220px;
 }
 
 @keyframes goAway {
@@ -631,6 +676,7 @@ main {
   }
 }
 .message {
+  z-index: 200;
   position: absolute;
   top: 10px;
   left: 0;
@@ -641,7 +687,7 @@ main {
   border-radius: 10000px;
   text-align: center;
   animation: goAway 0.5s ease-in-out forwards;
-  animation-delay: 5s;
+  animation-delay: 3s;
 }
 .message.error {
   background-color: tomato;
@@ -654,4 +700,8 @@ main {
 .message.success {
   background-color: chartreuse;
   color: black;
+}
+
+::-webkit-scrollbar {
+  width: 0;
 }

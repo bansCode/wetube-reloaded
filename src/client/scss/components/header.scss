@@ -1,6 +1,6 @@
 header {
   position: fixed;
-  z-index: 401;
+  z-index: 100;
   top: 0;
   padding: 10px 30px;
   display: flex;
@@ -15,7 +15,7 @@ header {
     .header__logo {
       display: flex;
       color: $red;
-      font-size: 30px;
+      font-size: 22px;
       i {
         display: block;
       }
@@ -30,7 +30,7 @@ header {
       background-color: transparent;
       color: white;
       border: none;
-      font-size: 20px;
+      font-size: 18px;
       margin-right: 20px;
       z-index: 401;
       transition: all 0.3s ease-in-out;
