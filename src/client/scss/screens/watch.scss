@@ -1,39 +1,97 @@
-.video__data {
-  margin-top: 20px;
-  display: flex;
-  flex-direction: column;
-  .video__title {
-    font-size: 26px;
-    margin-bottom: 5px;
-  }
-  .video__createdAt {
-    font-size: 12px;
-  }
-  .video__owner {
-    margin-bottom: 5px;
-    font-size: 14px;
-    a {
-      color: cornflowerblue;
-      text-decoration: underline;
-    }
-  }
-  .video__edit {
-    margin-top: 10px;
-  }
+.mainWatch {
+  margin: 0 20px;
+  margin-top: 80px;
+  position: relative;
 }
 
-.video__comments {
+.watchColumns {
   display: flex;
-  flex-direction: column;
-  max-width: 320px;
-  width: 100%;
-  margin: 0 auto;
-  margin-top: 20px;
-  .video__comment {
-    padding: 10px;
-    border-radius: 9999px;
-    background-color: white;
-    color: black;
-    margin-bottom: 10px;
+  .videoContent {
+    .video__data {
+      margin-top: 20px;
+      display: flex;
+      flex-direction: column;
+      .video__data__title {
+        font-size: 22px;
+        margin-bottom: 15px;
+        font-weight: 600;
+      }
+      .video__data__info {
+        display: flex;
+        justify-content: space-between;
+        .video__data__info__owner {
+          display: flex;
+          .avatar__video {
+            margin-right: 15px;
+          }
+          small {
+            display: block;
+          }
+          .video__owner {
+            font-size: 17px;
+            text-transform: uppercase;
+            font-weight: 600;
+            margin-top: 5px;
+            margin-bottom: 10px;
+            a {
+              text-decoration: none;
+              color: white;
+            }
+          }
+          .video__subscribers {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.7);
+          }
+          button {
+            border: none;
+            font-size: 14px;
+            font-weight: 600;
+            height: 40px;
+            padding: 0 18px;
+            border-radius: 20px;
+            margin: auto 0;
+            margin-left: 30px;
+          }
+        }
+        .video__edit {
+          margin-top: 10px;
+        }
+        .video__data__info__meta {
+          margin: auto 0;
+          button {
+            font-size: 15px;
+            font-weight: 500;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            margin-left: 10px;
+            background-color: #282828;
+            color: white;
+            span {
+              margin-left: 8px;
+            }
+          }
+        }
+      }
+    }
+    .video__comments {
+      display: flex;
+      flex-direction: column;
+      max-width: 320px;
+      width: 100%;
+      margin: 0 auto;
+      margin-top: 20px;
+      .video__comment {
+        padding: 10px;
+        border-radius: 9999px;
+        background-color: white;
+        color: black;
+        margin-bottom: 10px;
+      }
+    }
+  }
+  .videoRecommendation {
+    margin-top: 10px;
+    margin-left: 20px;
   }
 }

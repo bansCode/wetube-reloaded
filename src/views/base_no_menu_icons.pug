@@ -14,8 +14,8 @@ html(lang = "en")
         if messages.success 
             +message("success", messages.success)    
         include partials/header
-        include partials/menu
-        main#main.mainHome
+        include partials/menu_only_container
+        main#main.mainWatch
             block content 
         include partials/footer
     script(src="/assets/js/main.js") 

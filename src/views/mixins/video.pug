@@ -10,3 +10,15 @@ mixin video(video)
                     div.video-mixin__meta__info
                         span #{video.meta.views} 회 • 
                         span #{Math.floor((Date.now() - video.createdAt.getTime())/86400000)} days ago
+
+mixin videoRecommendation(videoRecommendation)
+    a(href=`/videos/${video.id}`).video-mixin-recommendation
+        div.video-mixin__thumb(style=`background-image:url(${video.thumbUrl});background-size: cover;backgroud-position: center;`)
+        div.video-mixin__data
+            div.video-mixin__data-info
+                span.video-mixin__title=video.title
+                div.video-mixin__meta
+                    span.video-mixin__meta__name #{video.owner.name} 
+                    div.video-mixin__meta__info
+                        span #{video.meta.views} 회 • 
+                        span #{Math.floor((Date.now() - video.createdAt.getTime())/86400000)} days ago
