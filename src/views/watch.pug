@@ -45,22 +45,34 @@ block content
                         button 
                             i.fa-solid.fa-download 
                             span Download
-                if String(video.owner._id) === String(loggedInUser._id)
-                    a.video__edit(href=`${video.id}/edit`) Edit Video &rarr;
-                    a.video__delete(href=`${video.id}/delete`) Delete Video &rarr;
+                        if String(video.owner._id) === String(loggedInUser._id)
+                            button
+                                a.video__edit(href=`${video.id}/edit`) Edit Video &rarr;
+                            button
+                                a.video__delete(href=`${video.id}/delete`) Delete Video &rarr;
+            div.video__details
+                span.video__details__views #{video.meta.views} views
+                span.video__details__uploadtime #{Math.floor((Date.now() - video.createdAt.getTime())/86400000)} days ago
+                p.video__details__description #{video.description}
+                span.video__details__hashtags #{video.hashtags}
             if loggedIn
                 div.video__add-comments
+                    img(src="/" + loggedInUser.avatarUrl).avatar__video
                     form.video__comment-form#commentForm
-                        textarea(cols="30", rows="10", placeholder="Write your comment...")
-                        button Add Comment
+                        textarea(cols="30", rows="10", placeholder="Add a comment...")
+                        div.video__comment-form__buttons
+                            button.video__comment-form__buttons__cancel Cancel
+                            button.video__comment-form__buttons__comment Add Comment
             div.video__comments
                 ul 
                     each comment in video.comments.reverse()
                         li#videoComment.video__comment(data-id=comment._id)
-                            i.fas.fa-comment
-                            span  #{comment.text}
+                            img(src=`/${comment.profileImage}`).avatar__video
+                            div.video__comment__data
+                                span.video__comment__data__name #{comment.profileName}
+                                span.video__comment__data__text  #{comment.text}
                             if String(comment.owner._id) === String(loggedInUser._id)
-                                span#deleteComment ❌
+                                span.video__comment__data__delete#deleteComment ❌
         div.videoRecommendation
             each video in videos 
                 +videoRecommendation(video)

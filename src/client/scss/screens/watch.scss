@@ -51,6 +51,7 @@
             border-radius: 20px;
             margin: auto 0;
             margin-left: 30px;
+            cursor: pointer;
           }
         }
         .video__edit {
@@ -67,6 +68,7 @@
             margin-left: 10px;
             background-color: #282828;
             color: white;
+            cursor: pointer;
             span {
               margin-left: 8px;
             }
@@ -74,19 +76,92 @@
         }
       }
     }
-    .video__comments {
-      display: flex;
-      flex-direction: column;
-      max-width: 320px;
-      width: 100%;
-      margin: 0 auto;
+    .video__details {
       margin-top: 20px;
+      margin-bottom: 30px;
+      padding: 15px;
+      background-color: #2a2a2b;
+      border-radius: 15px;
+      .video__details__views,
+      .video__details__uploadtime {
+        margin-right: 10px;
+        margin-bottom: 10px;
+        font-size: 15px;
+        font-weight: 600;
+      }
+      .video__details__description {
+        margin-top: 10px;
+        margin-bottom: 30px;
+      }
+      .video__details__hashtags {
+        color: #3e9dee;
+      }
+    }
+    .video__add-comments {
+      display: flex;
+      width: 100%;
+      .video__comment-form {
+        width: 100%;
+        textarea {
+          width: 100%;
+          background-color: transparent;
+          color: white;
+          border: none;
+          border-bottom: 1px solid rgba(255, 255, 255, 0.7);
+          outline: none;
+          height: 20px;
+          &::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+          }
+        }
+        .video__comment-form__buttons {
+          margin-top: 10px;
+          display: flex;
+          justify-content: flex-end;
+          button {
+            font-size: 14px;
+            color: white;
+            padding: 8px 15px;
+            margin-left: 10px;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+          }
+          .video__comment-form__buttons__cancel {
+            background-color: transparent;
+          }
+          .video__comment-form__buttons__comment {
+            color: black;
+            font-weight: 600;
+            background-color: #64b8ff;
+          }
+        }
+      }
+    }
+    .video__comments {
+      margin-top: 30px;
       .video__comment {
+        display: flex;
         padding: 10px;
         border-radius: 9999px;
-        background-color: white;
-        color: black;
-        margin-bottom: 10px;
+        background-color: rgba(255, 255, 255, 0.1);
+        color: white;
+        margin-bottom: 20px;
+        position: relative;
+        .video__comment__data {
+          display: flex;
+          flex-direction: column;
+          margin-left: 10px;
+          .video__comment__data__name {
+            font-weight: 600;
+            font-size: 15px;
+            margin-bottom: 10px;
+          }
+        }
+        .video__comment__data__delete {
+          position: absolute;
+          right: 20px;
+        }
       }
     }
   }

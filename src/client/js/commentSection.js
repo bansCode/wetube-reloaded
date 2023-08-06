@@ -4,19 +4,29 @@ const deleteComments = document.querySelectorAll("#deleteComment");
 const videoComments = document.querySelector(".video__comments ul");
 const videoComment = document.getElementById("videoComment");
 
-const addComment = (text, id) => {
+const addComment = (text, id, profileImage, profileName) => {
   const newComment = document.createElement("li");
   newComment.className = "video__comment";
   newComment.dataset.id = id;
-  const icon = document.createElement("i");
-  icon.className = "fas fa-comment";
+  const image = document.createElement("img");
+  image.className = "avatar__video";
+  image.src = `/${profileImage}`;
+  const div = document.createElement("div");
+  div.className = "video__comment__data";
   const span = document.createElement("span");
-  span.innerText = ` ${text}`;
+  span.innerText = `${profileName}`;
+  span.className = "video__comment__data__name";
   const span2 = document.createElement("span");
-  span2.innerText = "❌";
-  newComment.appendChild(icon);
-  newComment.appendChild(span);
-  newComment.appendChild(span2);
+  span2.innerText = ` ${text}`;
+  span2.className = "video__comment__data__text";
+  const span3 = document.createElement("span");
+  span3.innerText = "❌";
+  span3.className = "video__comment__data__delete";
+  div.appendChild(span);
+  div.appendChild(span2);
+  newComment.appendChild(image);
+  newComment.appendChild(div);
+  newComment.appendChild(span3);
   videoComments.prepend(newComment);
 };
 
@@ -37,8 +47,9 @@ const handleSubmit = async (event) => {
   });
   if (response.status === 201) {
     textarea.value = "";
-    const { newCommentId } = await response.json();
-    addComment(text, newCommentId);
+    const { newCommentId, newCommentImgSrc, newCommentUserName } =
+      await response.json();
+    addComment(text, newCommentId, newCommentImgSrc, newCommentUserName);
   }
 };
 
