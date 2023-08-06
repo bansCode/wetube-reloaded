@@ -10,17 +10,20 @@
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    .video-mixin__title {
-      font-size: 18px;
-      display: block;
-      margin-top: 10px;
-    }
-    .video-mixin__meta {
-      margin-top: 8px;
-      font-size: 12px;
-      .video-mixin__meta__name {
+    .video-mixin__data-info {
+      margin-left: 5px;
+      .video-mixin__title {
+        font-size: 18px;
         display: block;
-        margin-bottom: 5px;
+        margin-top: 10px;
+      }
+      .video-mixin__meta {
+        margin-top: 8px;
+        font-size: 12px;
+        .video-mixin__meta__name {
+          display: block;
+          margin-bottom: 5px;
+        }
       }
     }
   }
